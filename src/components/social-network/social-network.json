@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_social_network_social_networks",
+  "info": {
+    "displayName": "Social Network",
+    "icon": "discuss"
+  },
+  "options": {},
+  "attributes": {
+    "profile_link": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "minLength": 1
+    },
+    "icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "label": {
+      "type": "string",
+      "required": true,
+      "minLength": 1
+    }
+  }
+}

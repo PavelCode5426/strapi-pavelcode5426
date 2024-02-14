@@ -23,14 +23,14 @@ services:
       - ./package-lock.json:/opt/package-lock.json
 
       - ./.env:/opt/app/.env
-      - ./public/uploads:/opt/app/public/uploads
+      - ./public:/opt/app/public
     ports:
       - '1337:1337'
     networks:
       - strapi
     depends_on:
       - strapiDB
-      
+
   strapiDB:
     container_name: strapiDB
     platform: linux/amd64 #for platform error on Apple M1 chips
@@ -44,7 +44,6 @@ services:
     volumes:
       - strapi-data:/var/lib/postgresql/data/ #using a volume
       #- ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
-
     ports:
       - '5432:5432'
     networks:

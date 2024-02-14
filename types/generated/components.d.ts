@@ -1,75 +1,49 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface SectionCallToAction extends Schema.Component {
-  collectionName: 'components_ui_call_to_actions';
+export interface SharedResume extends Schema.Component {
+  collectionName: 'components_shared_resumes';
   info: {
-    displayName: 'Call to Action';
-    description: '';
+    displayName: 'Resume';
+    icon: 'television';
   };
   attributes: {
-    title: Attribute.String;
-    description: Attribute.Blocks;
-    buttons: Attribute.Component<'ui.button-link', true>;
-    image: Attribute.Media;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 3;
+      }>;
+    start_year: Attribute.Integer & Attribute.Required;
+    end_year: Attribute.Integer;
   };
 }
 
-export interface SectionCardsSection extends Schema.Component {
-  collectionName: 'components_section_cards_sections';
+export interface SocialNetworkSocialNetwork extends Schema.Component {
+  collectionName: 'components_social_network_social_networks';
   info: {
-    displayName: 'Cards Section';
+    displayName: 'Social Network';
+    icon: 'discuss';
   };
   attributes: {
-    cards: Attribute.Component<'ui.card', true>;
-    heading: Attribute.String;
-  };
-}
-
-export interface SeoMetaData extends Schema.Component {
-  collectionName: 'components_seo_meta_data';
-  info: {
-    displayName: 'Meta Data';
-  };
-  attributes: {
-    metaTitle: Attribute.String;
-    metaDescription: Attribute.String;
-    metaImage: Attribute.Media;
-  };
-}
-
-export interface UiButtonLink extends Schema.Component {
-  collectionName: 'components_ui_button_links';
-  info: {
-    displayName: 'Button Link';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    url: Attribute.String & Attribute.Required;
-    type: Attribute.Enumeration<['primary', 'secondary', 'danger']>;
-  };
-}
-
-export interface UiCard extends Schema.Component {
-  collectionName: 'components_ui_cards';
-  info: {
-    displayName: 'Card';
-  };
-  attributes: {
-    heading: Attribute.String;
-    description: Attribute.RichText;
+    profile_link: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
     icon: Attribute.Media;
+    label: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
   };
 }
 
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'section.call-to-action': SectionCallToAction;
-      'section.cards-section': SectionCardsSection;
-      'seo.meta-data': SeoMetaData;
-      'ui.button-link': UiButtonLink;
-      'ui.card': UiCard;
+      'shared.resume': SharedResume;
+      'social-network.social-network': SocialNetworkSocialNetwork;
     }
   }
 }
