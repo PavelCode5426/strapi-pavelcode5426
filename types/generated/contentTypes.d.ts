@@ -1052,6 +1052,7 @@ export interface ApiResumeResume extends Schema.CollectionType {
     singularName: 'resume';
     pluralName: 'resumes';
     displayName: 'Resume';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1099,6 +1100,12 @@ export interface ApiResumeResume extends Schema.CollectionType {
         };
       }> &
       Attribute.DefaultTo<true>;
+    attachments: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1129,9 +1136,10 @@ export interface ApiSkillSkill extends Schema.CollectionType {
     singularName: 'skill';
     pluralName: 'skills';
     displayName: 'Skill';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     name: Attribute.String &
@@ -1142,7 +1150,6 @@ export interface ApiSkillSkill extends Schema.CollectionType {
     ability: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::skill.skill',
       'oneToOne',

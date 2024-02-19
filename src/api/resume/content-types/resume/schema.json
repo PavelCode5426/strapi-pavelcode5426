@@ -4,7 +4,8 @@
   "info": {
     "singularName": "resume",
     "pluralName": "resumes",
-    "displayName": "Resume"
+    "displayName": "Resume",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -59,6 +60,21 @@
       "type": "boolean",
       "default": true,
       "required": true
+    },
+    "attachments": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 }
