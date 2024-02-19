@@ -791,7 +791,7 @@ export interface ApiPersonalInformationPersonalInformation
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   pluginOptions: {
     i18n: {
@@ -866,7 +866,6 @@ export interface ApiPersonalInformationPersonalInformation
       }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::personal-information.personal-information',
       'oneToOne',
@@ -1089,7 +1088,7 @@ export interface ApiResumeResume extends Schema.CollectionType {
     institution: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     is_educational: Attribute.Boolean &
